@@ -1,0 +1,44 @@
+CREATE TABLE Users (
+    username VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(255),
+    name VARCHAR(255),
+    gender VARCHAR(255),
+    gmail VARCHAR(255)
+);
+CREATE TABLE pets (
+    pet_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255), -- 關聯到使用者的帳號
+    petname VARCHAR(255),
+    species VARCHAR(255),
+    birthdate DATE,
+    FOREIGN KEY (username) REFERENCES users(username)
+);   CREATE TABLE appointments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    petname VARCHAR(255),
+    appointment_date DATETIME,
+    description VARCHAR(255),
+    FOREIGN KEY (username) REFERENCES Users(username)
+    
+);
+
+CREATE TABLE feed(
+    feed_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    petname VARCHAR(255),
+    feed_date DATETIME,
+    type VARCHAR(255),
+    FOREIGN KEY (username) REFERENCES Users(username)
+    
+);
+CREATE TABLE diary(
+    feed_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    petname VARCHAR(255),
+    feed_date DATE,
+    type VARCHAR(255),
+    FOREIGN KEY (username) REFERENCES Users(username)
+    
+);
+
+
